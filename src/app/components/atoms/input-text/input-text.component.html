@@ -1,0 +1,34 @@
+<div class="input-text">
+  <label class="input-text__label" [for]="inputId">
+    {{ label }} <span class="input-text__required">*</span>
+  </label>
+  <div class="input-text__wrapper">
+    <input
+      class="input-text__field"
+      [ngClass]="{
+        'input-text__field--error':
+          control.invalid && (control.touched || control.dirty)
+      }"
+      [formControl]="control"
+      [placeholder]="placeholder"
+      [id]="inputId"
+      [maxlength]="51"
+    />
+
+    <div class="input-text__counter">
+      <span class="input-text__current">{{ control.value?.length || 0 }}</span>
+      <span class="input-text__max">/90</span>
+    </div>
+  </div>
+
+  <span
+    class="input-text__error"
+    [style.visibility]="
+      control.invalid && (control.touched || control.dirty)
+        ? 'visible'
+        : 'hidden'
+    "
+  >
+    {{ getErrorMessage() }}
+  </span>
+</div>

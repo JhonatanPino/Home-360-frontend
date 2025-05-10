@@ -1,0 +1,27 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: calc(100vh - 57px);
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+.content-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+.content-main {
+  flex: 1;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .layout {
+    flex-direction: row;
+  }
+}
