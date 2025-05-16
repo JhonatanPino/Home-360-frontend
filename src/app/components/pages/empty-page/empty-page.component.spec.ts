@@ -1,21 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { render, screen } from '@testing-library/angular';
 import { EmptyPageComponent } from './empty-page.component';
 
 describe('EmptyPageComponent', () => {
-  let component: EmptyPageComponent;
-  let fixture: ComponentFixture<EmptyPageComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [EmptyPageComponent]
-    });
-    fixture = TestBed.createComponent(EmptyPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  test('debe mostrar el texto "empty-page works!"', async () => {
+    await render(EmptyPageComponent);
+    expect(screen.getByText('empty-page works!')).toBeTruthy();
   });
 });

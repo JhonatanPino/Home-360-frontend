@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Category } from 'src/app/shared/models/category.model';
 import { CategoryService } from 'src/app/core/services/category.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-category-form',
@@ -16,6 +17,7 @@ import { CategoryService } from 'src/app/core/services/category.service';
 export class CreateCategoryFormComponent {
   private readonly fb = inject(FormBuilder);
   private readonly categoryService = inject(CategoryService);
+  private readonly toastr = inject(ToastrService);
 
   categoryForm: FormGroup<{
     name: FormControl<string | null>;
@@ -49,6 +51,7 @@ export class CreateCategoryFormComponent {
     this.categoryService.createCategory(categoryData).subscribe({
       next: (response) => {
         console.log('Categoría creada exitosamente', response);
+        this.toastr.success('Categoría creada exitosamente.', 'Éxito');
         this.categoryForm.reset();
       },
       error: (error) => {
@@ -67,17 +70,23 @@ export class CreateCategoryFormComponent {
             errorMessage.toLowerCase().includes('already')
           ) {
             console.error('La categoría ya existe');
-            alert('La categoría ya existe.');
+            this.toastr.warning('La categoría ya existe.', 'Advertencia');
           } else {
             console.error('Solicitud inválida', error);
-            alert('Solicitud inválida, por favor revisa los datos ingresados.');
+            this.toastr.error(
+              'Solicitud inválida, por favor revisa los datos ingresados.',
+              'Error'
+            );
           }
         } else if (error.status === 500) {
           console.error('Error interno del servidor', error);
-          alert('Ocurrió un error en el servidor. Intenta más tarde.');
+          this.toastr.error(
+            'Ocurrió un error en el servidor. Intenta más tarde.',
+            'Error del Servidor'
+          );
         } else {
           console.error('Error al crear la categoría', error);
-          alert('Ocurrió un error inesperado.');
+          this.toastr.error('Ocurrió un error inesperado.', 'Error');
         }
       },
     });

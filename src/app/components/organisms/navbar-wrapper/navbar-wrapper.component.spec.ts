@@ -1,32 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { render, screen } from '@testing-library/angular';
 import { NavbarWrapperComponent } from './navbar-wrapper.component';
 
 describe('NavbarWrapperComponent', () => {
-  let component: NavbarWrapperComponent;
-  let fixture: ComponentFixture<NavbarWrapperComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ NavbarWrapperComponent ]
-    })
-    .compileComponents();
+  test('debe mostrar el nombre de usuario', async () => {
+    await render(NavbarWrapperComponent);
+    expect(screen.getByText('Bienvenido, Admin')).toBeTruthy();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarWrapperComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should have default userName as "Admin"', () => {
-    expect(component.userName).toBe('Admin');
-  });
-
-  it('should have default userAvatarUrl pointing to Avatar.jpg', () => {
-    expect(component.userAvatarUrl).toBe('assets/images/Avatar.jpg');
+  test('debe mostrar el avatar del usuario', async () => {
+    await render(NavbarWrapperComponent);
+    const avatar = screen.getByRole('img');
+    expect(avatar).toHaveAttribute('src', 'assets/images/Avatar.jpg');
   });
 });

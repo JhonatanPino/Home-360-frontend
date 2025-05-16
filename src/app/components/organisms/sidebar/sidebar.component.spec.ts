@@ -1,27 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { render, screen, fireEvent } from '@testing-library/angular';
 import { SidebarComponent } from './sidebar.component';
 
 describe('SidebarComponent', () => {
-  let component: SidebarComponent;
-  let fixture: ComponentFixture<SidebarComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [SidebarComponent]
+  test('debe renderizar el componente', async () => {
+    await render(SidebarComponent, {
+      // Si tu template usa routerLink, puedes mockear RouterTestingModule aquí
     });
-    fixture = TestBed.createComponent(SidebarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    expect(screen.getByRole('navigation')).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should set isActive when setActive is called', () => {
-    const component = new SidebarComponent();
-    component.setActive('dashboard');
-    expect(component.isActive).toBe('dashboard');
+  test('debe activar la sección seleccionada al hacer clic', async () => {
+    await render(SidebarComponent);
+    // Busca el enlace de Categorías (ajusta el texto si es diferente)
+    const categoriasLink = screen.getByText('Categorías');
+    fireEvent.click(categoriasLink);
+    // Verifica que la clase active se haya aplicado al ítem
+    expect(categoriasLink.closest('li')).toHaveClass('active');
   });
 });

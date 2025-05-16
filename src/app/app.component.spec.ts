@@ -3,27 +3,31 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [AppComponent],
+    }).compileComponents();
   });
 
-  it(`should have as title 'Home-360-frontend'`, () => {
+  test('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Home-360-frontend');
+    const component = fixture.componentInstance;
+    expect(component).toBeTruthy();
   });
 
-  it('should render title', () => {
+  test(`should have as title 'Home-360-frontend'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.componentInstance;
+    expect(component.title).toEqual('Home-360-frontend');
+  });
+
+  test('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Home-360-frontend app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain(
+      'Home-360-frontend app is running!'
+    );
   });
 });

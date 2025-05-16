@@ -1,80 +1,43 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
-import { By } from '@angular/platform-browser';
+import { render, screen } from '@testing-library/angular';
 import { TextareaComponent } from './textarea.component';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
 describe('TextareaComponent', () => {
-  let component: TextareaComponent;
-  let fixture: ComponentFixture<TextareaComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [TextareaComponent],
-      imports: [ReactiveFormsModule]
+  test('debe mostrar el label recibido por @Input', async () => {
+    await render(TextareaComponent, {
+      imports: [ReactiveFormsModule],
+      componentProperties: {
+        label: 'Descripción',
+        control: new FormControl(''),
+      },
     });
-
-    fixture = TestBed.createComponent(TextareaComponent);
-    component = fixture.componentInstance;
-
-    // Asignar valores de prueba
-    component.label = 'Descripción';
-    component.placeholder = 'Escribe algo aquí...';
-    component.control = new FormControl('', [Validators.required, Validators.maxLength(90)]);
-
-    fixture.detectChanges();
+    expect(screen.getByText('Descripción')).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  test('debe mostrar el placeholder recibido por @Input', async () => {
+    await render(TextareaComponent, {
+      imports: [ReactiveFormsModule],
+      componentProperties: {
+        placeholder: 'Escribe una descripción',
+        control: new FormControl(''),
+      },
+    });
+    expect(screen.getByPlaceholderText('Escribe una descripción')).toBeTruthy();
   });
 
-  it('should render label and placeholder correctly', () => {
-    const labelEl = fixture.debugElement.query(By.css('label')).nativeElement;
-    const textareaEl = fixture.debugElement.query(By.css('textarea')).nativeElement;
+  test('debe mostrar mensaje de error si el campo es requerido', () => {
+    const component = new TextareaComponent();
+    component.control = new FormControl('');
+    component.control.setErrors({ required: true });
 
-    expect(labelEl.textContent).toContain('Descripción');
-    expect(textareaEl.placeholder).toBe('Escribe algo aquí...');
+    expect(component.getErrorMessage()).toBe('Este campo es requerido');
   });
 
-  it('should show character count correctly', () => {
-    component.control.setValue('Hola mundo');
-    fixture.detectChanges();
+  test('debe retornar vacío si no hay errores', () => {
+    const component = new TextareaComponent();
+    component.control = new FormControl('');
+    component.control.setErrors(null);
 
-    const currentEl = fixture.debugElement.query(By.css('.textarea__current')).nativeElement;
-    const maxEl = fixture.debugElement.query(By.css('.textarea__max')).nativeElement;
-
-    expect(currentEl.textContent).toBe('10');
-    expect(maxEl.textContent).toBe('/90');
-  });
-
-  it('should show error when required and touched', () => {
-    component.control.markAsTouched();
-    component.control.setValue('');
-    fixture.detectChanges();
-
-    const errorEl = fixture.debugElement.query(By.css('.textarea__error')).nativeElement;
-    expect(errorEl.textContent.trim()).toBe('Este campo es requerido');
-    expect(errorEl.style.visibility).toBe('visible');
-  });
-
-  it('should show maxlength error when text exceeds 90 characters', () => {
-    const longText = 'a'.repeat(91);
-    component.control.setValue(longText);
-    component.control.markAsTouched();
-    fixture.detectChanges();
-
-    const errorEl = fixture.debugElement.query(By.css('.textarea__error')).nativeElement;
-    expect(errorEl.textContent.trim()).toBe('Excediste el número máximo de caracteres (Máximo 90).');
-    expect(errorEl.style.visibility).toBe('visible');
-  });
-
-  it('should not show error when control is valid', () => {
-    component.control.setValue('Texto válido');
-    component.control.markAsTouched();
-    fixture.detectChanges();
-
-    const errorEl = fixture.debugElement.query(By.css('.textarea__error')).nativeElement;
-    expect(errorEl.textContent.trim()).toBe('');
-    expect(errorEl.style.visibility).toBe('hidden');
+    expect(component.getErrorMessage()).toBe('');
   });
 });

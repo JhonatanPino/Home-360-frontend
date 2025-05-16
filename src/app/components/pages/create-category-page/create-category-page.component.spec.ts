@@ -1,21 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { render } from '@testing-library/angular';
 import { CreateCategoryPageComponent } from './create-category-page.component';
 
 describe('CreateCategoryPageComponent', () => {
-  let component: CreateCategoryPageComponent;
-  let fixture: ComponentFixture<CreateCategoryPageComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [CreateCategoryPageComponent]
-    });
-    fixture = TestBed.createComponent(CreateCategoryPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('debe crearse correctamente', async () => {
+    const { fixture } = await render(CreateCategoryPageComponent);
+    expect(fixture.componentInstance).toBeInstanceOf(
+      CreateCategoryPageComponent
+    );
   });
 });

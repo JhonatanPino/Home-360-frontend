@@ -2,7 +2,7 @@
   height: 57px;
   width: 100%;
   background-color: #ffffff;
-  border-bottom: 1px solid #E5E7EB;
+  border-bottom: 1px solid #e5e7eb;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,15 +25,15 @@
 }
 
 .navbar-logo-bold {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 20px;
-  color: #2563EB;
+  color: #2563eb;
 }
 
 .navbar-logo-regular {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 20px;
@@ -41,7 +41,9 @@
 }
 
 .navbar-right {
-  display: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .navbar-avatar {
@@ -49,50 +51,14 @@
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid #E5E7EB;
+  border: 1px solid #e5e7eb;
 }
 
-@media (min-width: 768px) {
-  .navbar-wrapper {
-    height: 57px;
-  }
-
-  .navbar-content {
-    justify-content: space-between;
-  }
-
-  .navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .navbar-welcome {
-    display: none;
-  }
-}
-
-@media (min-width: 1024px) {
-  .navbar-content {
-    justify-content: space-between;
-  }
-
-  .navbar-left {
-    display: flex;
-  }
-
-  .navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .navbar-welcome {
-    display: block;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 16px;
-    color: #6B7280;
-  }
+.navbar-welcome {
+  display: block;
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #6b7280;
 }

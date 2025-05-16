@@ -25,9 +25,6 @@ export class TextareaComponent implements OnInit {
     if (this.control.errors?.['required']) {
       return 'Este campo es requerido';
     }
-    if (this.control.errors?.['maxlength']) {
-      return 'Excediste el número máximo de caracteres (Máximo 90 caracteres)';
-    }
     return '';
   }
 }

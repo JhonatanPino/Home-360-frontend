@@ -13,6 +13,12 @@ export class CategoryService {
   constructor(private readonly http: HttpClient) {}
 
   createCategory(data: Category): Observable<Category> {
-    return this.http.post<Category>(this.apiUrl, data);
+    const url = `${this.apiUrl}categories/`;
+    return this.http.post<Category>(url, data);
+  }
+
+  getCategories(): Observable<Category[]> {
+    const url = `${this.apiUrl}categories/`;
+    return this.http.get<Category[]>(url);
   }
 }

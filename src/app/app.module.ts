@@ -15,7 +15,9 @@ import { SidebarComponent } from './components/organisms/sidebar/sidebar.compone
 import { FooterComponent } from './components/organisms/footer/footer.component';
 import { FooterSectionComponent } from './components/molecules/footer-section/footer-section.component';
 import { EmptyPageComponent } from './components/pages/empty-page/empty-page.component';
-//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,12 @@ import { EmptyPageComponent } from './components/pages/empty-page/empty-page.com
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    //FontAwesomeModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right', // Posición en la parte superior derecha
+      timeOut: 3000, // Duración del mensaje en milisegundos
+    }),
   ],
   providers: [
     {

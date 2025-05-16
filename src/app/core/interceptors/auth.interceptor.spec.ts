@@ -1,48 +1,62 @@
+import { AuthInterceptor } from './auth.interceptor';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { environment } from 'src/environments/environment';
 import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 
-import { CategoryService } from '../services/category.service';
-import { Category } from '../../shared/models/category.model';
-import { environment } from 'src/environments/environment';
-
-describe('CategoryService', () => {
-  let service: CategoryService;
+describe('AuthInterceptor', () => {
   let httpMock: HttpTestingController;
+  let http: HttpClient;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [CategoryService],
+      providers: [
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthInterceptor,
+          multi: true,
+        },
+      ],
     });
-    service = TestBed.inject(CategoryService);
     httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
   });
 
-  afterEach(() => httpMock.verify());
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  afterEach(() => {
+    httpMock.verify();
   });
 
-  it('should have apiUrl initialized from environment', () => {
-    // forzamos la lectura de la propiedad privada
-    const apiUrlValue = (service as any).apiUrl;
-    expect(apiUrlValue).toBe(environment.apiUrl);
-  });
+  it('debe agregar el header Authorization y Content-Type en peticiones POST', () => {
+    http.post('/api/test', { data: 123 }).subscribe();
 
-  it('should send POST request to create a category', () => {
-    const mockCategory: Category = { name: 'Test', description: 'Desc' };
-
-    service.createCategory(mockCategory).subscribe((resp) => {
-      expect(resp).toEqual(mockCategory);
-    });
-
-    const req = httpMock.expectOne(environment.apiUrl);
+    const req = httpMock.expectOne('/api/test');
     expect(req.request.method).toBe('POST');
-    expect(req.request.body).toEqual(mockCategory);
-    req.flush(mockCategory);
+    expect(req.request.headers.get('Authorization')).toBe(
+      `Bearer ${environment.token}`
+    );
+    expect(req.request.headers.get('Content-Type')).toBe('application/json');
+    req.flush({});
+  });
+
+  it('no debe agregar el header Authorization en peticiones GET', () => {
+    http.get('/api/test').subscribe();
+
+    const req = httpMock.expectOne('/api/test');
+    expect(req.request.method).toBe('GET');
+    expect(req.request.headers.has('Authorization')).toBe(false);
+    expect(req.request.headers.has('Content-Type')).toBe(false);
+    req.flush({});
   });
 });

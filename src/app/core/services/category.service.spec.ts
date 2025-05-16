@@ -1,53 +1,57 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
-
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { CategoryService } from './category.service';
 import { Category } from '../../shared/models/category.model';
 import { environment } from '../../../environments/environment';
 
-describe('CategoryService (Jest)', () => {
+describe('CategoryService', () => {
   let service: CategoryService;
-  let httpClientMock: jest.Mocked<HttpClient>;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
-    const mockHttpClient = {
-      post: jest.fn(),
-    };
-
     TestBed.configureTestingModule({
-      providers: [
-        CategoryService,
-        { provide: HttpClient, useValue: mockHttpClient },
-      ],
+      imports: [HttpClientTestingModule],
+      providers: [CategoryService],
     });
-
     service = TestBed.inject(CategoryService);
-    httpClientMock = TestBed.inject(HttpClient) as jest.Mocked<HttpClient>;
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  afterEach(() => {
+    httpMock.verify();
   });
 
-  it('should initialize apiUrl from environment', () => {
-    const apiUrl = (service as any).apiUrl;
-    expect(apiUrl).toBe(environment.apiUrl);
-  });
-
-  it('should call HttpClient.post with correct URL and data', () => {
-    const mockCategory: Category = { name: 'Test', description: 'Desc' };
-    const mockResponse = { ...mockCategory };
-
-    httpClientMock.post.mockReturnValue(of(mockResponse));
-
-    service.createCategory(mockCategory).subscribe((response) => {
-      expect(response).toEqual(mockResponse);
+  it('debe crear una categoría', () => {
+    const dummyCategory: Category = {
+      id: 1,
+      name: 'Test',
+      description: 'Desc',
+    };
+    service.createCategory(dummyCategory).subscribe((res) => {
+      expect(res).toEqual(dummyCategory);
     });
 
-    expect(httpClientMock.post).toHaveBeenCalledWith(
-      environment.apiUrl,
-      mockCategory
-    );
+    const req = httpMock.expectOne(`${environment.apiUrl}categories/`);
+    expect(req.request.method).toBe('POST');
+    expect(req.request.body).toEqual(dummyCategory);
+    req.flush(dummyCategory);
+  });
+
+  it('debe obtener las categorías', () => {
+    const dummyCategories: Category[] = [
+      { id: 1, name: 'Test1', description: 'Desc1' },
+      { id: 2, name: 'Test2', description: 'Desc2' },
+    ];
+
+    service.getCategories().subscribe((res) => {
+      expect(res).toEqual(dummyCategories);
+    });
+
+    const req = httpMock.expectOne(`${environment.apiUrl}categories/`);
+    expect(req.request.method).toBe('GET');
+    req.flush(dummyCategories);
   });
 });
