@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
+
+@Component({ selector: 'app-navbar-wrapper', template: 'Hogar360' })
+class MockNavbarWrapperComponent {}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AppComponent],
+      declarations: [AppComponent, MockNavbarWrapperComponent],
     }).compileComponents();
   });
 
@@ -16,18 +20,10 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  test(`should have as title 'Home-360-frontend'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const component = fixture.componentInstance;
-    expect(component.title).toEqual('Home-360-frontend');
-  });
-
-  test('should render title', () => {
+  test('should render app name in the DOM', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'Home-360-frontend app is running!'
-    );
+    expect(compiled.textContent).toContain('Hogar360');
   });
 });

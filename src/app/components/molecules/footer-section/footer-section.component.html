@@ -9,6 +9,7 @@
         class="footer-section__icon"
         *ngIf="item.icon"
         [icon]="item.icon"
+        data-testid="fa-icon"
       ></fa-icon>
       <span *ngIf="item.text">{{ item.text }}</span>
     </li>
