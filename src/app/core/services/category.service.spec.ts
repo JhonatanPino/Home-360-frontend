@@ -46,7 +46,7 @@ describe('CategoryService', () => {
       { id: 2, name: 'Test2', description: 'Desc2' },
     ];
 
-    service.getCategories().subscribe((res) => {
+    service.getAllCategories().subscribe((res) => {
       expect(res).toEqual(dummyCategories);
     });
 

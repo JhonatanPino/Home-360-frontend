@@ -18,6 +18,8 @@ import { EmptyPageComponent } from './components/pages/empty-page/empty-page.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CategoriesTableComponent } from './components/molecules/categories-table/categories-table.component';
+import { PaginationComponent } from './components/molecules/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     FooterSectionComponent,
     EmptyPageComponent,
+    CategoriesTableComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

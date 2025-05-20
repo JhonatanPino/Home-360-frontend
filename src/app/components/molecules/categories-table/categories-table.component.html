@@ -1,0 +1,32 @@
+<div class="categories-table__title">Categorías Existentes</div>
+<table class="categories-table">
+  <thead class="categories-table__head">
+    <tr class="categories-table__row">
+      <th class="categories-table__header categories-table__cell--id">ID</th>
+      <th class="categories-table__header categories-table__cell--name">
+        Nombre
+      </th>
+      <th class="categories-table__header categories-table__cell--description">
+        Descripción
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="!categories || categories.length === 0">
+      <td colspan="3" style="text-align: center; color: #6b7280; padding: 2rem">
+        No hay categorías
+      </td>
+    </tr>
+    <tr *ngFor="let category of categories">
+      <td class="categories-table__cell categories-table__cell--id">
+        {{ category.id }}
+      </td>
+      <td class="categories-table__cell categories-table__cell--name">
+        {{ category.name }}
+      </td>
+      <td class="categories-table__cell categories-table__cell--description">
+        {{ category.description }}
+      </td>
+    </tr>
+  </tbody>
+</table>
