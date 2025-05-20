@@ -41,8 +41,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     FontAwesomeModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-top-right', // Posición en la parte superior derecha
-      timeOut: 3000, // Duración del mensaje en milisegundos
+      positionClass: 'toast-top-right',
+      timeOut: 3000,
     }),
   ],
   providers: [

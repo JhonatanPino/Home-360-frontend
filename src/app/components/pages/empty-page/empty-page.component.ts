@@ -3,13 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-empty-page',
   template: `
-    <p>
-      empty-page works!
-    </p>
+    <div class="container-empty-page">
+      <p>Esta pagina se encuentra en desarrollo.</p>
+    </div>
   `,
-  styles: [
-  ]
+  styleUrls: ['./empty-page.component.scss'],
 })
-export class EmptyPageComponent {
-
-}
+export class EmptyPageComponent {}
