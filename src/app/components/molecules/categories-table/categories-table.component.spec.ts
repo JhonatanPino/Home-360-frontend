@@ -14,12 +14,12 @@ describe('CategoriesTableComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should create', () => {
+  test('should create', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
-  it('debe renderizar las filas de la tabla según las categorías', () => {
+  test('debe renderizar las filas de la tabla según las categorías', () => {
     const categories: Category[] = [
       { id: 1, name: 'Categoría 1', description: 'Descripción 1' },
       { id: 2, name: 'Categoría 2', description: 'Descripción 2' },
@@ -33,7 +33,7 @@ describe('CategoriesTableComponent', () => {
     expect(rows[1].textContent).toContain('Categoría 2');
   });
 
-  it('debe mostrar mensaje si no hay categorías', () => {
+  test('debe mostrar mensaje si no hay categorías', () => {
     component.categories = [];
     fixture.detectChanges();
     expect(fixture.nativeElement.textContent).toContain('No hay categorías');

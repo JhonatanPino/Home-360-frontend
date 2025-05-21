@@ -23,7 +23,7 @@ export class CategoryService {
   getAllCategories(
     page: number = DEFAULT_PAGINATION.PAGE,
     size: number = DEFAULT_PAGINATION.SIZE,
-    orderAsc: boolean = true
+    orderAsc: boolean = DEFAULT_PAGINATION.ORDER_ASC
   ): Observable<PageResult<Category>> {
     const url = `${this.apiUrl}categories/`;
     const params = buildPaginationParams(page, size, orderAsc);

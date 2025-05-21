@@ -3,41 +3,34 @@
   border-collapse: separate;
   border-spacing: 0;
   background-color: #ffffff;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0px 1px 2px 0px #0000000d;
+  box-shadow: 0px 1px 3px 0px #0000001a, 0px 1px 2px 0px #0000001a;
+  margin-top: 28px;
 
   &__title {
     font-family: "Manrope", sans-serif;
     font-weight: 600;
     font-size: 20px;
-    line-height: 28px;
-    color: #374151;
-    margin: 24px;
+    color: #323a48;
   }
 
   &__head {
-    background-color: #f9fafb;
-  }
-
-  &__row {
-    &:hover {
-      background-color: #f9f9f9;
-    }
+    background-color: #e0e7ff;
   }
 
   &__header {
     text-align: left;
     padding: 0.75rem;
-    font-size: 10px;
-    font-weight: 500;
-    color: #6b7280;
+    color: #1f2937;
+    border-bottom: 1px solid #e5e7eb;
   }
 
   &__cell {
     padding: 0.75rem;
-    font-size: 12px;
     font-weight: 400;
     border-bottom: 1px solid #e5e7eb;
   }
@@ -50,7 +43,6 @@
   &__cell--name {
     width: 200px;
     color: #1f2937;
-    font-weight: 500;
   }
 
   &__cell--description {
@@ -58,13 +50,9 @@
     color: #4b5563;
   }
 
-  @media (min-width: 1024px) {
-    &__header {
-      font-size: 12px;
-    }
-
-    &__cell {
-      font-size: 14px;
-    }
+  &__empty {
+    text-align: center;
+    padding: 2rem;
+    color: #6b7280;
   }
 }

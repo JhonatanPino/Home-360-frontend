@@ -1,10 +1,5 @@
 import { AuthInterceptor } from './auth.interceptor';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HTTP_INTERCEPTORS,
-} from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
 import {
@@ -12,8 +7,6 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
 
 describe('AuthInterceptor', () => {
   let httpMock: HttpTestingController;

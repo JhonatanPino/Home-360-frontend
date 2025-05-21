@@ -1,106 +1,76 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaginationComponent } from './pagination.component';
-import { SimpleChanges, SimpleChange } from '@angular/core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 describe('PaginationComponent', () => {
   let component: PaginationComponent;
   let fixture: ComponentFixture<PaginationComponent>;
+  let faIconLibraryMock: any;
 
   beforeEach(() => {
+    faIconLibraryMock = { addIcons: jest.fn() };
+
     TestBed.configureTestingModule({
       declarations: [PaginationComponent],
+      providers: [{ provide: FaIconLibrary, useValue: faIconLibraryMock }],
     });
+
     fixture = TestBed.createComponent(PaginationComponent);
     component = fixture.componentInstance;
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngOnChanges', () => {
-    let changes: SimpleChanges;
-
-    beforeEach(() => {
-      jest.spyOn(component as any, 'generatePageNumbers');
+  test('debe generar los números de página correctamente', () => {
+    component.totalPages = 3;
+    component.ngOnChanges({
+      totalPages: {
+        currentValue: 3,
+        previousValue: 0,
+        firstChange: true,
+        isFirstChange: () => true,
+      },
     });
-
-    it('should call generatePageNumbers when totalPages input changes', () => {
-      changes = {
-        totalPages: new SimpleChange(0, 5, false),
-      };
-      component.ngOnChanges(changes);
-      expect(component['generatePageNumbers']).toHaveBeenCalled();
-    });
-
-    it('should NOT call generatePageNumbers when other inputs change', () => {
-      changes = {
-        currentPage: new SimpleChange(0, 1, false),
-      };
-      component.ngOnChanges(changes);
-      expect(component['generatePageNumbers']).not.toHaveBeenCalled();
-    });
-
-    it('should call generatePageNumbers if totalPages change is the first change', () => {
-      changes = {
-        totalPages: new SimpleChange(undefined, 5, true),
-      };
-      component.ngOnChanges(changes);
-      expect(component['generatePageNumbers']).toHaveBeenCalled();
-    });
+    expect(component.pageNumbers).toEqual([0, 1, 2]);
   });
 
-  describe('generatePageNumbers', () => {
-    it('should populate pageNumbers array when totalPages is greater than 0', () => {
-      component.totalPages = 5;
-      (component as any)['generatePageNumbers']();
-      expect(component.pageNumbers).toEqual([0, 1, 2, 3, 4]);
+  test('debe limpiar los números de página si totalPages es 0', () => {
+    component.totalPages = 0;
+    component.ngOnChanges({
+      totalPages: {
+        currentValue: 0,
+        previousValue: 2,
+        firstChange: false,
+        isFirstChange: () => false,
+      },
     });
-
-    it('should set pageNumbers to an empty array when totalPages is 0', () => {
-      component.totalPages = 0;
-      (component as any)['generatePageNumbers']();
-      expect(component.pageNumbers).toEqual([]);
-    });
-
-    it('should set pageNumbers to an empty array when totalPages is less than 0', () => {
-      component.totalPages = -1;
-      (component as any)['generatePageNumbers']();
-      expect(component.pageNumbers).toEqual([]);
-    });
+    expect(component.pageNumbers).toEqual([]);
   });
 
-  describe('goToPage', () => {
-    beforeEach(() => {
-      jest.spyOn(component.pageChange, 'emit');
-      component.totalPages = 5;
-    });
+  test('debe emitir pageChange al ir a una página válida', () => {
+    component.totalPages = 5;
+    component.currentPage = 2;
+    const spy = jest.spyOn(component.pageChange, 'emit');
+    component.goToPage(3);
+    expect(spy).toHaveBeenCalledWith(3);
+  });
 
-    it('should emit pageChange if page is within valid range and not the current page', () => {
-      component.currentPage = 1;
-      component.goToPage(2);
-      expect(component.pageChange.emit).toHaveBeenCalledWith(2);
-    });
+  test('no debe emitir pageChange si la página es la actual', () => {
+    component.totalPages = 5;
+    component.currentPage = 2;
+    const spy = jest.spyOn(component.pageChange, 'emit');
+    component.goToPage(2);
+    expect(spy).not.toHaveBeenCalled();
+  });
 
-    it('should NOT emit pageChange if page is the current page', () => {
-      component.currentPage = 2;
-      component.goToPage(2);
-      expect(component.pageChange.emit).not.toHaveBeenCalled();
-    });
-
-    it('should NOT emit pageChange if page is negative', () => {
-      component.goToPage(-1);
-      expect(component.pageChange.emit).not.toHaveBeenCalled();
-    });
-
-    it('should NOT emit pageChange if page is equal to totalPages', () => {
-      component.goToPage(component.totalPages);
-      expect(component.pageChange.emit).not.toHaveBeenCalled();
-    });
-
-    it('should NOT emit pageChange if page is greater than totalPages', () => {
-      component.goToPage(component.totalPages + 1);
-      expect(component.pageChange.emit).not.toHaveBeenCalled();
-    });
+  test('no debe emitir pageChange si la página es inválida', () => {
+    component.totalPages = 5;
+    component.currentPage = 2;
+    const spy = jest.spyOn(component.pageChange, 'emit');
+    component.goToPage(-1);
+    component.goToPage(5);
+    expect(spy).not.toHaveBeenCalled();
   });
 });

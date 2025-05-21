@@ -1,5 +1,5 @@
 .create-category-page {
-  padding: 0 2rem;
+  padding: 0 5%;
   padding-bottom: 3rem;
   box-sizing: border-box;
 
@@ -11,29 +11,26 @@
     font-weight: 400;
   }
 
-  &__subtitle {
-    font-size: 18px;
-    margin-bottom: 1rem;
-    font-family: "Manrope", sans-serif;
-    color: #1f2937;
-    font-weight: 500;
-  }
-
   &__table-container {
-    margin-bottom: 3rem;
+    margin-bottom: 0px;
   }
 
   &__order-button {
     float: right;
-    box-shadow: none !important;
-    padding: 8px 16px;
-    border-radius: 4px;
+    background: #fff;
+    border: none;
+    border-radius: 8px;
+    border: 1px solid #1565c0;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    padding: 11px 16px;
     cursor: pointer;
     transition: background 0.2s;
   }
 
   &__order-button:hover {
     background: #1565c0;
+    border: 1px solid #1565c0;
     color: #fff;
   }
 }

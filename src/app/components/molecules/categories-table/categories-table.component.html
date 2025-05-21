@@ -13,9 +13,7 @@
   </thead>
   <tbody>
     <tr *ngIf="!categories || categories.length === 0">
-      <td colspan="3" style="text-align: center; color: #6b7280; padding: 2rem">
-        No hay categorías
-      </td>
+      <td class="categories-table__empty" colspan="3">No hay categorías</td>
     </tr>
     <tr *ngFor="let category of categories">
       <td class="categories-table__cell categories-table__cell--id">

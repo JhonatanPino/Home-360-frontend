@@ -1,6 +1,9 @@
+import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 import { CreateCategoryPageComponent } from './create-category-page.component';
 import { CategoryService } from 'src/app/core/services/category.service';
-import { of } from 'rxjs';
+import { PageResult } from 'src/app/shared/models/page-result.model';
+import { Category } from 'src/app/shared/models/category.model';
 
 describe('CreateCategoryPageComponent', () => {
   let component: CreateCategoryPageComponent;
@@ -8,30 +11,33 @@ describe('CreateCategoryPageComponent', () => {
 
   beforeEach(() => {
     mockCategoryService = {
-      getAllCategories: jest
-        .fn()
-        .mockReturnValue(of({ results: [], total: 0 })),
+      getAllCategories: jest.fn().mockReturnValue(
+        of({
+          content: [],
+          page: 0,
+          size: 0,
+          orderAsc: true,
+          totalElements: 0,
+          totalPages: 0,
+        } as PageResult<Category>)
+      ),
     };
 
-    jest
-      .spyOn(require('@angular/core'), 'inject')
-      .mockImplementation((token: any) => {
-        if (token === CategoryService) return mockCategoryService;
-        throw new Error('Servicio no mockeado: ' + token);
-      });
+    TestBed.configureTestingModule({
+      declarations: [CreateCategoryPageComponent],
+      providers: [{ provide: CategoryService, useValue: mockCategoryService }],
+    });
 
-    component = new CreateCategoryPageComponent();
+    component = TestBed.createComponent(
+      CreateCategoryPageComponent
+    ).componentInstance;
   });
 
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
-  it('debe crearse correctamente', () => {
+  test('debe crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debe cambiar la página actual al llamar onPageChange', (done) => {
+  test('debe cambiar la página actual al llamar onPageChange', (done) => {
     component.currentPage$.subscribe((page) => {
       expect(page).toBe(2);
       done();
@@ -39,7 +45,7 @@ describe('CreateCategoryPageComponent', () => {
     component.onPageChange(2);
   });
 
-  it('debe alternar el orden al llamar toggleOrderAsc', (done) => {
+  test('debe alternar el orden al llamar toggleOrderAsc', (done) => {
     // Estado inicial: true
     component.orderAsc$.subscribe((orderAsc) => {
       if (orderAsc === false) {
@@ -50,7 +56,7 @@ describe('CreateCategoryPageComponent', () => {
     component.toggleOrderAsc();
   });
 
-  it('debe recargar la página al llamar onCategoryCreated', (done) => {
+  test('debe recargar la página al llamar onCategoryCreated', (done) => {
     const spy = jest.spyOn(component['currentPageSubject'], 'next');
     component.onCategoryCreated();
     expect(spy).toHaveBeenCalledWith(
@@ -59,7 +65,7 @@ describe('CreateCategoryPageComponent', () => {
     done();
   });
 
-  it('debe llamar a getAllCategories con los parámetros correctos', (done) => {
+  test('debe llamar a getAllCategories con los parámetros correctos', (done) => {
     component.categories$.subscribe(() => {
       expect(mockCategoryService.getAllCategories).toHaveBeenCalledWith(
         0,

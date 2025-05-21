@@ -5,7 +5,8 @@ body {
 }
 
 app-root {
-  height: 100vh;
+  height: auto;
+  min-height: 100%;
 }
 
 .toast-top-right {
