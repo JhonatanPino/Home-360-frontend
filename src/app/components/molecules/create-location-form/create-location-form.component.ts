@@ -57,19 +57,15 @@ export class CreateLocationFormComponent {
       return;
     }
 
-    if (!this.selectedCity || !this.selectedCity.id) {
-      this.toastr.error(
-        STRING_MESSAGE.FIELD_CITY_REQUIRED,
-        STRING_MESSAGE.ERROR
-      );
+    if (!this.selectedCity) {
+      this.locationForm.get('city')?.setErrors({ required: true });
       return;
     }
 
     const { sector } = this.locationForm.getRawValue();
-
     const locationData: LocationDto = {
       sector: sector!,
-      idCity: this.selectedCity.id,
+      idCity: this.selectedCity.id!,
     };
 
     console.log(STRING_MESSAGE.DATA_SEND, locationData);
