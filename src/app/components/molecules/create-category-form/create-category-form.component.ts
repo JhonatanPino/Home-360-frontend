@@ -8,6 +8,8 @@ import {
 import { Category } from 'src/app/shared/models/category.model';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { ToastrService } from 'ngx-toastr';
+import { VALIDATION } from 'src/app/shared/constants/validation.constants';
+import { STRING_MESSAGE } from 'src/app/shared/constants/string-message.constants';
 
 @Component({
   selector: 'app-create-category-form',
@@ -25,11 +27,11 @@ export class CreateCategoryFormComponent {
   }> = this.fb.group({
     name: this.fb.control<string | null>('', [
       Validators.required,
-      Validators.maxLength(50),
+      Validators.maxLength(VALIDATION.FIELD_NAME_MAX_LENGTH),
     ]),
     description: this.fb.control<string | null>('', [
       Validators.required,
-      Validators.maxLength(90),
+      Validators.maxLength(VALIDATION.FIELD_DESCRIPTION_MAX_LENGTH),
     ]),
   });
 
@@ -46,47 +48,56 @@ export class CreateCategoryFormComponent {
       description: description!,
     };
 
-    console.log('Datos que se enviarán:', categoryData);
+    console.log(STRING_MESSAGE.DATA_SEND, categoryData);
 
     this.categoryService.createCategory(categoryData).subscribe({
       next: (response) => {
-        console.log('Categoría creada exitosamente', response);
-        this.toastr.success('Categoría creada exitosamente.', 'Éxito');
+        console.log(STRING_MESSAGE.CATEGORY_CREATED_SUCCESS, response);
+        this.toastr.success(
+          STRING_MESSAGE.CATEGORY_CREATED_SUCCESS,
+          STRING_MESSAGE.SUCCESS
+        );
         this.categoryForm.reset();
       },
       error: (error) => {
-        console.log('Error completo:', error);
+        console.log(STRING_MESSAGE.COMPLETE_ERROR, error);
         let errorMessage = '';
         if (error?.error) {
           errorMessage =
             error?.error?.message ??
             error?.error?.mensaje ??
-            'Error desconocido';
+            STRING_MESSAGE.UNKNOWN_ERROR;
         }
 
         if (error.status === 400) {
           if (
-            errorMessage.toLowerCase().includes('exists') ||
-            errorMessage.toLowerCase().includes('already')
+            errorMessage.toLowerCase().includes(STRING_MESSAGE.EXISTS) ||
+            errorMessage.toLowerCase().includes(STRING_MESSAGE.ALREADY)
           ) {
-            console.error('La categoría ya existe');
-            this.toastr.warning('La categoría ya existe.', 'Advertencia');
+            console.error();
+            this.toastr.warning(
+              STRING_MESSAGE.CATEGORY_ALREADY_EXISTS,
+              STRING_MESSAGE.WARNING
+            );
           } else {
-            console.error('Solicitud inválida', error);
+            console.error(STRING_MESSAGE.INVALID_REQUEST, error);
             this.toastr.error(
-              'Solicitud inválida, por favor revisa los datos ingresados.',
-              'Error'
+              STRING_MESSAGE.INVALID_DATA,
+              STRING_MESSAGE.ERROR
             );
           }
         } else if (error.status === 500) {
-          console.error('Error interno del servidor', error);
+          console.error(STRING_MESSAGE.INTERNAL_SERVER_ERROR, error);
           this.toastr.error(
-            'Ocurrió un error en el servidor. Intenta más tarde.',
-            'Error del Servidor'
+            STRING_MESSAGE.SERVER_ERROR_MESSAGE,
+            STRING_MESSAGE.SERVER_ERROR
           );
         } else {
-          console.error('Error al crear la categoría', error);
-          this.toastr.error('Ocurrió un error inesperado.', 'Error');
+          console.error(STRING_MESSAGE.CATEGORY_CREATED_ERROR, error);
+          this.toastr.error(
+            STRING_MESSAGE.UNEXPECTED_ERROR,
+            STRING_MESSAGE.ERROR
+          );
         }
       },
     });

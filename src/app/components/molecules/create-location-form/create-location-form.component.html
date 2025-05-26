@@ -1,0 +1,51 @@
+<h1 class="form-title">Crear Ubicación</h1>
+<form
+  class="create-location-form"
+  [formGroup]="locationForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-group">
+    <label class="form-group__label" for="citySelect"
+      >Ciudad (Departamento)<span class="form-group__required">*</span>
+    </label>
+    <select
+      id="citySelect"
+      class="form-control"
+      formControlName="city"
+      [ngClass]="{
+        'empty-city': !selectedCity,
+        'selected-city': selectedCity,
+        'invalid-select':
+          locationForm.controls.city.touched &&
+          locationForm.controls.city.invalid
+      }"
+      required
+    >
+      <option [ngValue]="null" disabled selected>Selecciona una ciudad</option>
+      <option *ngFor="let city of cities" [ngValue]="city">
+        {{ city.name }} ({{ city.department.name }})
+      </option>
+    </select>
+    <div class="error-message">
+      <span
+        *ngIf="
+          locationForm.controls.city.touched &&
+          locationForm.controls.city.invalid
+        "
+      >
+        {{ locationForm.controls.city.errors?.['required'] ? 'Debes seleccionar una ciudad' : '' }}
+      </span>
+    </div>
+  </div>
+
+  <app-input-text
+    [label]="'Nombre del Sector'"
+    [placeholder]="'Escribe el nombre del sector (máximo 50 caracteres)'"
+    [control]="locationForm.controls.sector"
+  >
+  </app-input-text>
+
+  <div class="form-actions">
+    <app-button label="Crear" type="submit"></app-button>
+  </div>
+</form>

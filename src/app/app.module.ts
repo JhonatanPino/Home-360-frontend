@@ -20,6 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CategoriesTableComponent } from './components/molecules/categories-table/categories-table.component';
 import { PaginationComponent } from './components/molecules/pagination/pagination.component';
+import { CreateLocationFormComponent } from './components/molecules/create-location-form/create-location-form.component';
+import { CreateLocationPageComponent } from './components/pages/create-location-page/create-location-page.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { PaginationComponent } from './components/molecules/pagination/paginatio
     EmptyPageComponent,
     CategoriesTableComponent,
     PaginationComponent,
+    CreateLocationFormComponent,
+    CreateLocationPageComponent,
   ],
   imports: [
     BrowserModule,

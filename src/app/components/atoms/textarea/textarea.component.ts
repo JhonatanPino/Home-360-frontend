@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { STRING_MESSAGE } from 'src/app/shared/constants/string-message.constants';
 
 @Component({
   selector: 'app-textarea',
@@ -23,7 +24,7 @@ export class TextareaComponent implements OnInit {
 
   getErrorMessage() {
     if (this.control.errors?.['required']) {
-      return 'Este campo es requerido';
+      return STRING_MESSAGE.FIELD_REQUIRED;
     }
     return '';
   }

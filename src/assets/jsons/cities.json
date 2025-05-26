@@ -1,0 +1,206 @@
+[
+  {
+    "id": 1,
+    "name": "Bello",
+    "description": "Ubicada en el norte",
+    "department": {
+      "id": 1,
+      "name": "Antioquia",
+      "description": "Departamento de Antioquia",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 2,
+    "name": "Envigado",
+    "description": "Ciudad ubicada en el sur",
+    "department": {
+      "id": 1,
+      "name": "Antioquia",
+      "description": "Departamento de Antioquia",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 3,
+    "name": "Medellín",
+    "description": "Capital del departamento",
+    "department": {
+      "id": 1,
+      "name": "Antioquia",
+      "description": "Departamento de Antioquia",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 4,
+    "name": "Rionegro",
+    "description": "Ciudad ubicada al oriente",
+    "department": {
+      "id": 1,
+      "name": "Antioquia",
+      "description": "Departamento de Antioquia",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 5,
+    "name": "Toca",
+    "description": "Ciudad muy bonita",
+    "department": {
+      "id": 2,
+      "name": "Boyacá",
+      "description": "Departamento de Boyacá",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 6,
+    "name": "Tunja",
+    "description": "Capital del departamento",
+    "department": {
+      "id": 2,
+      "name": "Boyacá",
+      "description": "Departamento de Boyacá",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 7,
+    "name": "Villa de Leyva",
+    "description": "Ubicada en la provincia de RICARTE",
+    "department": {
+      "id": 2,
+      "name": "Boyacá",
+      "description": "Departamento de Boyacá",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 8,
+    "name": "Manizales",
+    "description": "Capital del departamento",
+    "department": {
+      "id": 3,
+      "name": "Caldas",
+      "description": "Departamento de Caldas",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 9,
+    "name": "Neira",
+    "description": "Ciudad ubicada al sur del departamento",
+    "department": {
+      "id": 3,
+      "name": "Caldas",
+      "description": "Departamento de Caldas",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 10,
+    "name": "Bogotá",
+    "description": "Capital del departamento",
+    "department": {
+      "id": 4,
+      "name": "Cundinamarca",
+      "description": "Departamento de Cundinamarca",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 11,
+    "name": "Zipaquirá",
+    "description": "Ubicada en la provincia de SABANA",
+    "department": {
+      "id": 4,
+      "name": "Cundinamarca",
+      "description": "Departamento de Cundinamarca",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 12,
+    "name": "La Plata",
+    "description": "Localizado en el suroccidente",
+    "department": {
+      "id": 5,
+      "name": "Huila",
+      "description": "Departamento de Huila",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 13,
+    "name": "Neiva",
+    "description": "Capital del departamento",
+    "department": {
+      "id": 5,
+      "name": "Huila",
+      "description": "Departamento de Huila",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 14,
+    "name": "Armenia",
+    "description": "Capital del departamento",
+    "department": {
+      "id": 6,
+      "name": "Quindío",
+      "description": "Departamento de Quindío",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 15,
+    "name": "Quimbaya",
+    "description": "Ciudad ubicada en el sur",
+    "department": {
+      "id": 6,
+      "name": "Quindío",
+      "description": "Departamento de Quindío",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 16,
+    "name": "Pereira",
+    "description": "Capital del departamento",
+    "department": {
+      "id": 7,
+      "name": "Risaralda",
+      "description": "Departamento de Risaralda",
+      "cities": []
+    },
+    "locations": []
+  },
+  {
+    "id": 17,
+    "name": "Quinchía",
+    "description": "Conocido como la villa de los cerros",
+    "department": {
+      "id": 7,
+      "name": "Risaralda",
+      "description": "Departamento de Risaralda",
+      "cities": []
+    },
+    "locations": []
+  }
+]

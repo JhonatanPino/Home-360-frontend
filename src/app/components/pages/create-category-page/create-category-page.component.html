@@ -1,7 +1,8 @@
 <section class="create-category-page">
   <div class="create-category-page__form-container">
-    <app-create-category-form (created)="onCategoryCreated()">
-    </app-create-category-form>
+    <app-create-category-form
+      (created)="onCategoryCreated()"
+    ></app-create-category-form>
   </div>
 
   <button (click)="toggleOrderAsc()" class="create-category-page__order-button">

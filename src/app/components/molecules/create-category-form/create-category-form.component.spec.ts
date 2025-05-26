@@ -92,7 +92,7 @@ describe('CreateCategoryFormComponent', () => {
     component.onSubmit();
     expect(mockToastr.error).toHaveBeenCalledWith(
       'Ocurrió un error en el servidor. Intenta más tarde.',
-      'Error del Servidor'
+      'Error del servidor'
     );
   });
 
