@@ -3,5 +3,6 @@ export const environment = {
   DEFAULT_LANGUAGE: 'en',
   LIST_LANGUAGES: 'en,es',
   apiUrl: 'http://localhost:8090/api/v1/',
+  apiUrlUser: 'http://localhost:8091/api/v1/',
   token: '',
 };

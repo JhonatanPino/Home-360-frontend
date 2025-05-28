@@ -31,7 +31,10 @@ export class CreateLocationFormComponent {
         this.cities = data;
       },
       error: () => {
-        this.toastr.error('No se pudieron cargar las ciudades', 'Error');
+        this.toastr.error(
+          STRING_MESSAGE.CITIES_NOT_LOADED,
+          STRING_MESSAGE.ERROR
+        );
       },
     });
   }

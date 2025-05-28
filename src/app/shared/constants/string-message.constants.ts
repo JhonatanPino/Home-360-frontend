@@ -13,8 +13,14 @@ export const STRING_MESSAGE = {
   LOCATION_ALREADY_EXISTS: 'La ubicación ya existe.',
   LOCATION_CREATED_ERROR: 'Error al crear la ubicación.',
   FIELD_CITY_REQUIRED: 'Debes seleccionar una ciudad',
+  CITIES_NOT_LOADED: 'No se pudieron cargar las ciudades',
 
   // User
+  USER_CREATED_SUCCESS: 'Usuario creado exitosamente.',
+  USER_ALREADY_EXISTS: 'El usuario ya existe.',
+  USER_CREATED_ERROR: 'Error al crear el usuario.',
+  FIELD_ROLE_REQUIRED: 'Debes seleccionar un rol',
+  ROLES_NOT_LOADED: 'No se pudieron cargar los roles',
 
   // Words
   SUCCESS: 'Éxito',

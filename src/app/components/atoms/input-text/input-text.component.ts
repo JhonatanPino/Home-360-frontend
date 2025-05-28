@@ -11,6 +11,7 @@ export class InputTextComponent implements OnInit {
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() control!: FormControl<string | null>;
+  @Input() showCounter: boolean = true;
 
   inputId: string = '';
 
