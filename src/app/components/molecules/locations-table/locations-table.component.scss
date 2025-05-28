@@ -1,4 +1,4 @@
-.categories-table {
+.locations-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
@@ -36,17 +36,22 @@
   }
 
   &__cell--id {
-    width: 80px;
+    width: 100px;
     color: #4b5563;
   }
 
-  &__cell--name {
+  &__cell--sector {
     width: 200px;
     color: #1f2937;
   }
 
-  &__cell--description {
-    width: 300px;
+  &__cell--ciudad {
+    width: 200px;
+    color: #3e4751;
+  }
+
+  &__cell--departamento {
+    width: 200px;
     color: #4b5563;
   }
 

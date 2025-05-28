@@ -1,4 +1,5 @@
 import { Department } from './department.model';
+import { Location } from './location.model';
 
 export interface City {
   id?: number;

@@ -11,13 +11,11 @@ import { BehaviorSubject, combineLatest, Observable, switchMap } from 'rxjs';
 })
 export class CreateCategoryPageComponent {
   private readonly categoryService = inject(CategoryService);
-
   private readonly currentPageSubject = new BehaviorSubject<number>(0);
   private readonly orderAscSubject = new BehaviorSubject<boolean>(true);
 
   currentPage$ = this.currentPageSubject.asObservable();
   orderAsc$ = this.orderAscSubject.asObservable();
-
   orderAsc = true;
 
   categories$: Observable<PageResult<Category>> = combineLatest([

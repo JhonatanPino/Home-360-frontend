@@ -5,17 +5,25 @@
     ></app-create-location-form>
   </div>
 
-  <!-- <button (click)="toggleOrderAsc()" class="create-location-page__order-button">
+  <button (click)="toggleOrderAsc()" class="create-location-page__order-button">
     <span *ngIf="orderAsc">⬆️</span>
     <span *ngIf="!orderAsc">⬇️</span>
-    Ordenar por nombre: {{ orderAsc ? "Ascendente" : "Descendente" }}
-  </button> -->
+    Ordenar por sector: {{ orderAsc ? "Ascendente" : "Descendente" }}
+  </button>
 
-  <!-- <div class="create-location-page__table-container">
+  <input
+    type="text"
+    placeholder="Buscar por ciudad o departamento"
+    #searchInput
+    (input)="onFilterChange(searchInput.value)"
+    class="create-location-page__search-input"
+  />
+
+  <div class="create-location-page__table-container">
     <app-locations-table
       [locations]="(locations$ | async)?.content || []"
     ></app-locations-table>
-  </div> -->
+  </div>
 
   <app-pagination
     [currentPage]="(locations$ | async)?.page || 0"

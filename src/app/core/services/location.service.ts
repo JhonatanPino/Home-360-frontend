@@ -7,6 +7,7 @@ import { PageResult } from '../../shared/models/page-result.model';
 import { DEFAULT_PAGINATION } from '../../shared/constants/pagination.constants';
 import { buildPaginationParams } from '../../shared/utils/http-params.util';
 import { LocationDto } from '../../shared/dtos/location-dto.model';
+import { LocationResponse } from '../../shared/dtos/location-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,12 +23,24 @@ export class LocationService {
   }
 
   getAllLocations(
+    text: string = '',
     page: number = DEFAULT_PAGINATION.PAGE,
     size: number = DEFAULT_PAGINATION.SIZE,
     orderAsc: boolean = DEFAULT_PAGINATION.ORDER_ASC
-  ): Observable<PageResult<Location>> {
+  ): Observable<PageResult<LocationResponse>> {
     const url = `${this.apiUrl}locations/`;
-    const params = buildPaginationParams(page, size, orderAsc);
-    return this.http.get<PageResult<Location>>(url, { params });
+    const params = { text, page, size, orderAsc };
+    return this.http.get<PageResult<LocationResponse>>(url, { params });
   }
 }
+
+// getAllLocations(
+//   text: string = '',
+//   page: number = DEFAULT_PAGINATION.PAGE,
+//   size: number = DEFAULT_PAGINATION.SIZE,
+//   orderAsc: boolean = DEFAULT_PAGINATION.ORDER_ASC
+// ): Observable<PageResult<Location>> {
+//   const url = `${this.apiUrl}locations/`;
+//   const params = buildPaginationParams(text, page, size, orderAsc);
+//   return this.http.get<PageResult<Location>>(url, { params });
+// }

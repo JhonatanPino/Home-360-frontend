@@ -22,6 +22,7 @@ import { CategoriesTableComponent } from './components/molecules/categories-tabl
 import { PaginationComponent } from './components/molecules/pagination/pagination.component';
 import { CreateLocationFormComponent } from './components/molecules/create-location-form/create-location-form.component';
 import { CreateLocationPageComponent } from './components/pages/create-location-page/create-location-page.component';
+import { LocationsTableComponent } from './components/molecules/locations-table/locations-table.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CreateLocationPageComponent } from './components/pages/create-location-
     PaginationComponent,
     CreateLocationFormComponent,
     CreateLocationPageComponent,
+    LocationsTableComponent,
   ],
   imports: [
     BrowserModule,

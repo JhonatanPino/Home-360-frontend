@@ -68,7 +68,7 @@ describe('LocationService', () => {
     };
     httpMock.get.mockReturnValue(of(pageResult));
 
-    service.getAllLocations(0, 10, true).subscribe((result) => {
+    service.getAllLocations('', 0, 10, true).subscribe((result) => {
       expect(result).toEqual(pageResult);
       expect(httpMock.get).toHaveBeenCalledWith(
         expect.stringContaining('locations/'),

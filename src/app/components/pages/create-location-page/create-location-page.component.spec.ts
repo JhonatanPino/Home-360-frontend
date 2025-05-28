@@ -3,7 +3,7 @@ import { CreateLocationPageComponent } from './create-location-page.component';
 import { LocationService } from 'src/app/core/services/location.service';
 import { of } from 'rxjs';
 import { PageResult } from 'src/app/shared/models/page-result.model';
-import { Location } from 'src/app/shared/models/location.model';
+import { LocationResponse } from 'src/app/shared/dtos/location-response.model';
 
 describe('CreateLocationPageComponent', () => {
   let component: CreateLocationPageComponent;
@@ -25,12 +25,12 @@ describe('CreateLocationPageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('debe crear el componente', () => {
+  test('debe crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debe obtener ubicaciones al inicializar', (done) => {
-    const pageResult: PageResult<Location> = {
+  test('debe obtener ubicaciones al inicializar', (done) => {
+    const pageResult: PageResult<LocationResponse> = {
       content: [],
       page: 0,
       size: 10,
@@ -43,6 +43,7 @@ describe('CreateLocationPageComponent', () => {
     component.locations$.subscribe((result) => {
       expect(result).toEqual(pageResult);
       expect(mockLocationService.getAllLocations).toHaveBeenCalledWith(
+        'a',
         0,
         undefined,
         true
@@ -51,13 +52,33 @@ describe('CreateLocationPageComponent', () => {
     });
   });
 
-  it('debe cambiar de página al llamar onPageChange', () => {
+  test('debe cambiar el filtro y reiniciar la página al llamar onFilterChange con texto', () => {
+    const filterSpy = jest.spyOn(component['filterSubject'], 'next');
+    const pageSpy = jest.spyOn(component['currentPageSubject'], 'next');
+    component.onFilterChange('Bogotá');
+    expect(filterSpy).toHaveBeenCalledWith('Bogotá');
+    expect(pageSpy).toHaveBeenCalledWith(0);
+  });
+
+  test('debe poner "*" como filtro si el texto está vacío', () => {
+    const filterSpy = jest.spyOn(component['filterSubject'], 'next');
+    component.onFilterChange('');
+    expect(filterSpy).toHaveBeenCalledWith('*');
+  });
+
+  test('debe poner "*" como filtro si el texto es solo espacios', () => {
+    const filterSpy = jest.spyOn(component['filterSubject'], 'next');
+    component.onFilterChange('   ');
+    expect(filterSpy).toHaveBeenCalledWith('*');
+  });
+
+  test('debe cambiar de página al llamar onPageChange', () => {
     const spy = jest.spyOn(component['currentPageSubject'], 'next');
     component.onPageChange(2);
     expect(spy).toHaveBeenCalledWith(2);
   });
 
-  it('debe recargar la página actual al llamar onLocationCreated', () => {
+  test('debe recargar la página actual al llamar onLocationCreated', () => {
     const spy = jest.spyOn(component['currentPageSubject'], 'next');
     component.onLocationCreated();
     expect(spy).toHaveBeenCalledWith(
@@ -65,7 +86,7 @@ describe('CreateLocationPageComponent', () => {
     );
   });
 
-  it('debe alternar el orden al llamar toggleOrderAsc', () => {
+  test('debe alternar el orden al llamar toggleOrderAsc', () => {
     const spy = jest.spyOn(component['orderAscSubject'], 'next');
     const prevValue = component['orderAscSubject'].getValue();
     component.toggleOrderAsc();

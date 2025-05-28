@@ -1,0 +1,37 @@
+<div class="locations-table__title">Ubicaciones Existentes</div>
+<table class="locations-table">
+  <thead class="locations-table__head">
+    <tr class="locations-table__row">
+      <th class="locations-table__header locations-table__cell--id">ID</th>
+      <th class="locations-table__header locations-table__cell--sector">
+        Sector
+      </th>
+      <th class="locations-table__header locations-table__cell--ciudad">
+        Ciudad
+      </th>
+      <th class="locations-table__header locations-table__cell--departamento">
+        Departamento
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="!locations || locations.length === 0">
+      <td class="locations-table__empty" colspan="4">No hay ubicaciones</td>
+    </tr>
+
+    <tr *ngFor="let locationResponse of locations">
+      <td class="locations-table__cell locations-table__cell--id">
+        #SEC-{{ locationResponse.id }}
+      </td>
+      <td class="locations-table__cell locations-table__cell--sector">
+        {{ locationResponse.sector }}
+      </td>
+      <td class="locations-table__cell locations-table__cell--ciudad">
+        {{ locationResponse.cityName }}
+      </td>
+      <td class="locations-table__cell locations-table__cell--departamento">
+        {{ locationResponse.departmentName }}
+      </td>
+    </tr>
+  </tbody>
+</table>
