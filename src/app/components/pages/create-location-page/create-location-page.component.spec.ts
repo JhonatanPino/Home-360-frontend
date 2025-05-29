@@ -60,16 +60,16 @@ describe('CreateLocationPageComponent', () => {
     expect(pageSpy).toHaveBeenCalledWith(0);
   });
 
-  test('debe poner "*" como filtro si el texto está vacío', () => {
+  test('debe poner "a" como filtro si el texto está vacío', () => {
     const filterSpy = jest.spyOn(component['filterSubject'], 'next');
     component.onFilterChange('');
-    expect(filterSpy).toHaveBeenCalledWith('*');
+    expect(filterSpy).toHaveBeenCalledWith('a');
   });
 
-  test('debe poner "*" como filtro si el texto es solo espacios', () => {
+  test('debe poner "a" como filtro si el texto es solo espacios', () => {
     const filterSpy = jest.spyOn(component['filterSubject'], 'next');
     component.onFilterChange('   ');
-    expect(filterSpy).toHaveBeenCalledWith('*');
+    expect(filterSpy).toHaveBeenCalledWith('a');
   });
 
   test('debe cambiar de página al llamar onPageChange', () => {

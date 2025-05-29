@@ -37,7 +37,7 @@ export class CreateLocationPageComponent {
   );
 
   onFilterChange(value: string): void {
-    this.filterSubject.next(value && value.trim() !== '' ? value : '*');
+    this.filterSubject.next(value && value.trim() !== '' ? value : 'a');
     this.currentPageSubject.next(0); // Reset to first page on filter change
   }
   onPageChange(page: number): void {

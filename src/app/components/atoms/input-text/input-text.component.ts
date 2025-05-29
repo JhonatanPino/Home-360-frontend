@@ -12,6 +12,7 @@ export class InputTextComponent implements OnInit {
   @Input() placeholder: string = '';
   @Input() control!: FormControl<string | null>;
   @Input() showCounter: boolean = true;
+  @Input() maxlength: number | null = null;
 
   inputId: string = '';
 

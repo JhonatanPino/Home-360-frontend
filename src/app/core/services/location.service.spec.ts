@@ -77,4 +77,25 @@ describe('LocationService', () => {
       done();
     });
   });
+
+  test('debe obtener todas las ubicaciones sin datos por defecto', (done) => {
+    const pageResult: PageResult<Location> = {
+      content: [],
+      page: 0,
+      size: 10,
+      orderAsc: true,
+      totalElements: 0,
+      totalPages: 0,
+    };
+    httpMock.get.mockReturnValue(of(pageResult));
+
+    service.getAllLocations().subscribe((result) => {
+      expect(result).toEqual(pageResult);
+      expect(httpMock.get).toHaveBeenCalledWith(
+        expect.stringContaining('locations/'),
+        expect.objectContaining({ params: expect.any(Object) })
+      );
+      done();
+    });
+  });
 });

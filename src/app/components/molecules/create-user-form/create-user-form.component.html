@@ -5,6 +5,7 @@
     [placeholder]="'Escribe el nombre del usuario'"
     [control]="userForm.controls.name"
     [showCounter]="false"
+    [maxlength]="60"
   >
   </app-input-text>
 
@@ -13,6 +14,7 @@
     [placeholder]="'Escribe los apellidos del usuario'"
     [control]="userForm.controls.lastName"
     [showCounter]="false"
+    [maxlength]="60"
   >
   </app-input-text>
 
@@ -21,6 +23,7 @@
     [placeholder]="'Escribe el número de documento del usuario'"
     [control]="userForm.controls.documentNumber"
     [showCounter]="false"
+    [maxlength]="60"
   >
   </app-input-text>
 
@@ -29,6 +32,7 @@
     [placeholder]="'Escribe el número de telefono del usuario'"
     [control]="userForm.controls.phone"
     [showCounter]="false"
+    [maxlength]="13"
   >
   </app-input-text>
 
@@ -39,6 +43,7 @@
     [placeholder]="'Escribe el correo electrónico del usuario'"
     [control]="userForm.controls.email"
     [showCounter]="false"
+    [maxlength]="60"
   >
   </app-input-text>
 
@@ -47,6 +52,7 @@
     [placeholder]="'Escribe la contraseña del usuario'"
     [control]="userForm.controls.password"
     [showCounter]="false"
+    [maxlength]="30"
   >
   </app-input-text>
 
@@ -81,6 +87,6 @@
   </div>
 
   <div class="form-actions">
-    <app-button label="Crear" type="submit"></app-button>
+    <app-button label="Crear Usuario" type="submit"></app-button>
   </div>
 </form>

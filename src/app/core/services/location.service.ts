@@ -33,14 +33,3 @@ export class LocationService {
     return this.http.get<PageResult<LocationResponse>>(url, { params });
   }
 }
-
-// getAllLocations(
-//   text: string = '',
-//   page: number = DEFAULT_PAGINATION.PAGE,
-//   size: number = DEFAULT_PAGINATION.SIZE,
-//   orderAsc: boolean = DEFAULT_PAGINATION.ORDER_ASC
-// ): Observable<PageResult<Location>> {
-//   const url = `${this.apiUrl}locations/`;
-//   const params = buildPaginationParams(text, page, size, orderAsc);
-//   return this.http.get<PageResult<Location>>(url, { params });
-// }

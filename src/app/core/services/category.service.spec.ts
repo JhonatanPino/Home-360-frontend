@@ -64,4 +64,28 @@ describe('CategoryService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(dummyPage);
   });
+
+  test('debe obtener todas las categorías con paginación sin datos por defecto', () => {
+    const dummyPage: PageResult<Category> = {
+      content: [
+        { id: 1, name: 'Cat 1', description: 'Desc 1' },
+        { id: 2, name: 'Cat 2', description: 'Desc 2' },
+      ],
+      totalElements: 2,
+      page: 0,
+      size: 10,
+      orderAsc: true,
+      totalPages: 1,
+    };
+
+    service.getAllCategories().subscribe((res) => {
+      expect(res).toEqual(dummyPage);
+    });
+
+    const req = httpMock.expectOne(
+      (r) => r.url === `${environment.apiUrl}categories/`
+    );
+    expect(req.request.method).toBe('GET');
+    req.flush(dummyPage);
+  });
 });
