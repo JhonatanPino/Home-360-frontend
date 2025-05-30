@@ -25,6 +25,7 @@ import { CreateLocationPageComponent } from './components/pages/create-location-
 import { LocationsTableComponent } from './components/molecules/locations-table/locations-table.component';
 import { CreateUserFormComponent } from './components/molecules/create-user-form/create-user-form.component';
 import { CreateUserPageComponent } from './components/pages/create-user-page/create-user-page.component';
+import { InputDateComponent } from './components/atoms/input-date/input-date.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CreateUserPageComponent } from './components/pages/create-user-page/cre
     LocationsTableComponent,
     CreateUserFormComponent,
     CreateUserPageComponent,
+    InputDateComponent,
   ],
   imports: [
     BrowserModule,

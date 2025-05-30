@@ -7,8 +7,9 @@
 }
 
 .create-user-form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Dos columnas iguales
+  gap: 24px 32px; // Espacio entre filas y columnas
   gap: 24px;
   background-color: #ffffff;
   padding: 24px;
@@ -17,6 +18,7 @@
   margin: 24px 0px 34px 0px;
 
   .form-actions {
+    grid-column: 1 / -1; // Ocupa ambas columnas
     display: flex;
     justify-content: flex-end;
     width: 100%;

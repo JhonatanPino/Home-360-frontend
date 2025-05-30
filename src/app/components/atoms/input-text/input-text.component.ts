@@ -28,6 +28,12 @@ export class InputTextComponent implements OnInit {
     if (this.control.errors?.['required']) {
       return STRING_MESSAGE.FIELD_REQUIRED;
     }
+    if (this.control.errors?.['pattern']) {
+      return STRING_MESSAGE.INVALID_FORMAT;
+    }
+    if (this.control.errors?.['email']) {
+      return STRING_MESSAGE.INVALID_FORMAT;
+    }
     return '';
   }
 }

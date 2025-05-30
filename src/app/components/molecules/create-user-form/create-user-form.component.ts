@@ -26,7 +26,7 @@ function mayorDeEdadValidator(
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
     age--;
   }
-  return age >= 18 ? null : { menorDeEdad: true };
+  return age >= 18 ? null : { mayorDeEdadValidator: true };
 }
 
 @Component({
@@ -38,6 +38,7 @@ export class CreateUserFormComponent {
   private readonly fb = inject(FormBuilder);
   private readonly userService = inject(UserService);
   private readonly toastr = inject(ToastrService);
+  today = new Date().toISOString().split('T')[0];
 
   roles: Role[] = [];
   constructor(private http: HttpClient) {

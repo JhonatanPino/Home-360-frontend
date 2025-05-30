@@ -36,8 +36,6 @@
   >
   </app-input-text>
 
-  <!-- fecha de nacimineto  -->
-
   <app-input-text
     [label]="'Correo Electrónico del Usuario'"
     [placeholder]="'Escribe el correo electrónico del usuario'"
@@ -56,6 +54,14 @@
   >
   </app-input-text>
 
+  <!-- fecha de nacimineto  -->
+  <app-input-date
+    [label]="'Fecha de nacimiento'"
+    [control]="userForm.controls.birthDate"
+    [max]="today"
+  ></app-input-date>
+
+  <!-- Atomizar Select-->
   <div class="form-group">
     <label class="form-group__label" for="roleSelect"
       >Rol<span class="form-group__required">*</span>

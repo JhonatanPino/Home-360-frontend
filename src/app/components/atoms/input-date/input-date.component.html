@@ -1,0 +1,29 @@
+<div class="input-date">
+  <label class="input-date__label" [for]="inputId">
+    {{ label }} <span class="input-date__required">*</span>
+  </label>
+  <div class="input-date__wrapper">
+    <input
+      class="input-date__field"
+      [ngClass]="{
+        'input-date__field--error':
+          control.invalid && (control.touched || control.dirty)
+      }"
+      [formControl]="control"
+      [id]="inputId"
+      [max]="max"
+      type="date"
+    />
+  </div>
+
+  <span
+    class="input-date__error"
+    [style.visibility]="
+      control.invalid && (control.touched || control.dirty)
+        ? 'visible'
+        : 'hidden'
+    "
+  >
+    {{ getErrorMessage() }}
+  </span>
+</div>

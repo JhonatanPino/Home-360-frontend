@@ -2,7 +2,7 @@ export const STRING_MESSAGE = {
   // General
   FIELD_REQUIRED: 'Este campo es requerido',
   DATA_SEND: 'Datos que se enviarán:',
-
+  INVALID_FORMAT: 'Formato inválido',
   // Category
   CATEGORY_CREATED_SUCCESS: 'Categoría creada exitosamente.',
   CATEGORY_ALREADY_EXISTS: 'La categoría ya existe.',
@@ -21,6 +21,7 @@ export const STRING_MESSAGE = {
   USER_CREATED_ERROR: 'Error al crear el usuario.',
   FIELD_ROLE_REQUIRED: 'Debes seleccionar un rol',
   ROLES_NOT_LOADED: 'No se pudieron cargar los roles',
+  AGE_REQUIRED: 'Debe ser mayor de edad',
 
   // Words
   SUCCESS: 'Éxito',
