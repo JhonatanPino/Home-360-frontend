@@ -3,6 +3,7 @@ export const STRING_MESSAGE = {
   FIELD_REQUIRED: 'Este campo es requerido',
   DATA_SEND: 'Datos que se enviarán:',
   INVALID_FORMAT: 'Formato inválido',
+
   // Category
   CATEGORY_CREATED_SUCCESS: 'Categoría creada exitosamente.',
   CATEGORY_ALREADY_EXISTS: 'La categoría ya existe.',
@@ -22,6 +23,13 @@ export const STRING_MESSAGE = {
   FIELD_ROLE_REQUIRED: 'Debes seleccionar un rol',
   ROLES_NOT_LOADED: 'No se pudieron cargar los roles',
   AGE_REQUIRED: 'Debe ser mayor de edad',
+
+  // Home
+  HOME_PUBLISHED_SUCCESS: 'Casa publicada exitosamente.',
+  HOME_ALREADY_EXISTS: 'La casa ya existe.',
+  HOME_PUBLISHED_ERROR: 'Error al publicar la casa.',
+  FIELD_CATEGOTY_REQUIRED: 'Debes seleccionar una categoría',
+  FIELD_LOCATION_REQUIRED: 'Debes seleccionar una ubicación',
 
   // Words
   SUCCESS: 'Éxito',

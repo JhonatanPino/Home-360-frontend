@@ -33,6 +33,7 @@
     transition: background-color 0.3s ease, transform 0.1s, box-shadow 0.1s;
     box-shadow: 0 2px 8px #0002;
     width: 272px;
+    min-width: 272px;
   }
 
   &__order-button:hover {
