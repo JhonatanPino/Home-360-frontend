@@ -28,6 +28,9 @@ import { CreateUserPageComponent } from './components/pages/create-user-page/cre
 import { InputDateComponent } from './components/atoms/input-date/input-date.component';
 import { PublishHomePageComponent } from './components/pages/publish-home-page/publish-home-page.component';
 import { PublishHomeFormComponent } from './components/molecules/publish-home-form/publish-home-form.component';
+import { SelectComponent } from './components/atoms/select/select.component';
+import { InputNumberComponent } from './components/atoms/input-number/input-number.component';
+import { InputCurrencyComponent } from './components/atoms/input-currency/input-currency.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,9 @@ import { PublishHomeFormComponent } from './components/molecules/publish-home-fo
     InputDateComponent,
     PublishHomePageComponent,
     PublishHomeFormComponent,
+    SelectComponent,
+    InputNumberComponent,
+    InputCurrencyComponent,
   ],
   imports: [
     BrowserModule,

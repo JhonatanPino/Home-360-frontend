@@ -1,1 +1,71 @@
-<p>publish-home-form works!</p>
+<h1 class="form-title">Publicar Casa</h1>
+<form class="create-home-form" [formGroup]="homeForm" (ngSubmit)="onSubmit()">
+  <app-input-text
+    [label]="'Nombre o Dirección de la Casa'"
+    [placeholder]="'Escribe el nombre o dirección de la casa'"
+    [control]="homeForm.controls.name"
+    [showCounter]="false"
+    [maxlength]="60"
+  >
+  </app-input-text>
+
+  <app-input-text
+    [label]="'Descripción de la Casa'"
+    [placeholder]="'Escribe una descripción de la casa'"
+    [control]="homeForm.controls.description"
+    [showCounter]="false"
+    [maxlength]="90"
+  >
+  </app-input-text>
+
+  <app-input-number
+    [label]="'Habitaciones'"
+    [placeholder]="'Cantidad de habitaciones'"
+    [control]="homeForm.controls.rooms"
+    [min]="1"
+    [max]="200"
+  ></app-input-number>
+
+  <app-input-number
+    [label]="'Baños'"
+    [placeholder]="'Cantidad de baños'"
+    [control]="homeForm.controls.bathrooms"
+    [min]="1"
+    [max]="100"
+  ></app-input-number>
+
+  <app-input-currency
+    [label]="'Precio'"
+    [placeholder]="'Precio de la vivienda'"
+    [control]="homeForm.controls.price"
+    [min]="0"
+  ></app-input-currency>
+
+  <!-- fecha de publicacion activa  -->
+  <app-input-date
+    [label]="'Fecha de Publicación Activa'"
+    [control]="homeForm.controls.publicationDateActive"
+    [min]="today"
+    [max]="publicationActiveMaxDate"
+  ></app-input-date>
+
+  <app-select
+    [label]="'Categoria'"
+    [control]="homeForm.controls.category"
+    [options]="categories"
+    optionLabel="name"
+    placeholder="Selecciona una Categoria"
+  ></app-select>
+
+  <app-select
+    [label]="'Ubicación'"
+    [control]="homeForm.controls.location"
+    [options]="locations"
+    optionLabel="name"
+    placeholder="Selecciona una Ubicación"
+  ></app-select>
+
+  <div class="form-actions">
+    <app-button label="Publicar Casa" type="submit"></app-button>
+  </div>
+</form>

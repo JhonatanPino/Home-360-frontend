@@ -1,0 +1,22 @@
+<div class="form-group">
+  <label class="form-group__label" [for]="inputId">
+    {{ label }}<span class="form-group__required">*</span>
+  </label>
+  <input
+    type="number"
+    class="form-control"
+    [formControl]="control"
+    [attr.min]="min"
+    [attr.max]="max"
+    [placeholder]="placeholder"
+    [id]="inputId"
+    [ngClass]="{ 'invalid-input': control.touched && control.invalid }"
+  />
+  <div class="error-message">
+    <span *ngIf="control.touched && control.invalid">
+      {{ control.errors?.['required'] ? 'Este campo es requerido' : '' }}
+      {{ control.errors?.['min'] ? 'El valor mínimo es ' + min : '' }}
+      {{ control.errors?.['max'] ? 'El valor máximo es ' + max : '' }}
+    </span>
+  </div>
+</div>

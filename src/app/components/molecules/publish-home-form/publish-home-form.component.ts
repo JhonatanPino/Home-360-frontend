@@ -39,7 +39,7 @@ export class PublishHomeFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.getAllCategories().subscribe({
+    this.categoryService.getAllCategories(0, 100).subscribe({
       next: (data) => {
         this.categories = data.content;
       },
@@ -49,13 +49,9 @@ export class PublishHomeFormComponent implements OnInit {
       },
     });
 
-    this.locationService.getAllLocations().subscribe({
+    this.http.get<Location[]>('assets/jsons/locations.json').subscribe({
       next: (data) => {
-        this.locations = data.content.map((loc: any) => ({
-          id: loc.id,
-          sector: loc.sector,
-          city: loc.city, // Asegúrate de que 'city' esté presente en LocationResponse
-        })); // o data, según la respuesta de tu backend
+        this.locations = data;
       },
       error: (error) => {
         this.toastr.error('No se pudieron cargar las ubicaciones', 'Error');
@@ -106,6 +102,12 @@ export class PublishHomeFormComponent implements OnInit {
   get selectedLocation(): Location | null {
     return this.homeForm.get('location')?.value ?? null;
   }
+  get publicationActiveMaxDate(): string {
+    const fechaLimite = new Date();
+    fechaLimite.setDate(fechaLimite.getDate() + 30);
+    return fechaLimite.toISOString().split('T')[0];
+  }
+
   onSubmit(): void {
     if (this.homeForm.invalid) {
       this.homeForm.markAllAsTouched();
@@ -128,16 +130,29 @@ export class PublishHomeFormComponent implements OnInit {
       rooms,
       bathrooms,
       price,
-      publicationDate,
       publicationDateActive,
     } = this.homeForm.getRawValue();
+
+    const fechaActual = new Date();
+    const fechaLimite = new Date(fechaActual);
+    fechaLimite.setDate(fechaLimite.getDate() + 30);
+
+    if (publicationDateActive! > fechaLimite) {
+      this.homeForm.get('publicationDateActive')?.setErrors({ maxDate: true });
+      this.toastr.error(
+        'La fecha de publicación activa no puede ser mayor a 30 días después de la fecha de publicación.',
+        'Error'
+      );
+      return;
+    }
+
     const homeData: HomeDto = {
       name: name!,
       description: description!,
       rooms: rooms!,
       bathrooms: bathrooms!,
       price: price!,
-      publicationDate: publicationDate!,
+      publicationDate: fechaActual,
       publicationDateActive: publicationDateActive!,
       idCategory: this.selectedCategory.id!,
       idLocation: this.selectedLocation.id!,

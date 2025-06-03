@@ -1,0 +1,25 @@
+<div class="form-group">
+  <label class="form-group__label" [for]="inputId">
+    {{ label }}<span class="form-group__required">*</span>
+  </label>
+  <select
+    class="form-control"
+    [formControl]="control"
+    [id]="inputId"
+    [ngClass]="{
+      'invalid-select': control.touched && control.invalid
+    }"
+  >
+    <option [ngValue]="null" disabled selected>{{ placeholder }}</option>
+    <option *ngFor="let option of options" [ngValue]="option">
+      {{ option[optionLabel] }}
+      <span *ngIf="option.city"> - {{ option.city }}</span>
+      <span *ngIf="option.department"> ({{ option.department }})</span>
+    </option>
+  </select>
+  <div class="error-message">
+    <span *ngIf="control.touched && control.invalid">
+      {{ control.errors?.['required'] ? 'Debes seleccionar una opción' : '' }}
+    </span>
+  </div>
+</div>

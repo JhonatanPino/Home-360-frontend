@@ -10,6 +10,7 @@ import { STRING_MESSAGE } from 'src/app/shared/constants/string-message.constant
 export class InputDateComponent implements OnInit {
   @Input() label: string = '';
   @Input() control!: FormControl<Date | null>;
+  @Input() min: string = '';
   @Input() max: string = '';
   inputId: string = '';
 

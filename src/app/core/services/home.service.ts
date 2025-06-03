@@ -16,7 +16,7 @@ export class HomeService {
   constructor(private readonly http: HttpClient) {}
 
   publishHome(data: HomeDto): Observable<HomeDto> {
-    const url = `${this.apiUrl}homes/`;
+    const url = `${this.apiUrl}lhomes/`;
     return this.http.post<HomeDto>(url, data);
   }
 

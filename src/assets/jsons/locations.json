@@ -1,0 +1,224 @@
+[
+  {
+    "id": 26,
+    "name": "Barrio Bellavista",
+    "city": "Bello",
+    "department": "Antioquia"
+  },
+  {
+    "id": 29,
+    "name": "Barrio Paris",
+    "city": "Bello",
+    "department": "Antioquia"
+  },
+  {
+    "id": 36,
+    "name": "Sector Madera",
+    "city": "Bello",
+    "department": "Antioquia"
+  },
+  {
+    "id": 8,
+    "name": "Sector Niquia",
+    "city": "Bello",
+    "department": "Antioquia"
+  },
+
+  {
+    "id": 2,
+    "name": "Barrio El Salado",
+    "city": "Envigado",
+    "department": "Antioquia"
+  },
+  {
+    "id": 6,
+    "name": "Barrio Jardines",
+    "city": "Envigado",
+    "department": "Antioquia"
+  },
+  {
+    "id": 3,
+    "name": "Sector San Lucas",
+    "city": "Envigado",
+    "department": "Antioquia"
+  },
+
+  {
+    "id": 10,
+    "name": "Barrio Belen",
+    "city": "Medellín",
+    "department": "Antioquia"
+  },
+  {
+    "id": 1,
+    "name": "Barrio Buenos Aires",
+    "city": "Medellín",
+    "department": "Antioquia"
+  },
+  {
+    "id": 5,
+    "name": "Barrio El Salvador",
+    "city": "Medellín",
+    "department": "Antioquia"
+  },
+  {
+    "id": 4,
+    "name": "Sector La Candelaria",
+    "city": "Medellín",
+    "department": "Antioquia"
+  },
+  {
+    "id": 17,
+    "name": "Barrio Laureles",
+    "city": "Medellín",
+    "department": "Antioquia"
+  },
+  {
+    "id": 32,
+    "name": "Sector El Poblado",
+    "city": "Medellín",
+    "department": "Antioquia"
+  },
+  {
+    "id": 14,
+    "name": "Sector Estadio",
+    "city": "Medellín",
+    "department": "Antioquia"
+  },
+
+  {
+    "id": 18,
+    "name": "Barrio Belen",
+    "city": "Rionegro",
+    "department": "Antioquia"
+  },
+  {
+    "id": 24,
+    "name": "Barrio El Faro",
+    "city": "Rionegro",
+    "department": "Antioquia"
+  },
+  {
+    "id": 27,
+    "name": "Barrio Porvenir",
+    "city": "Rionegro",
+    "department": "Antioquia"
+  },
+
+  {
+    "id": 25,
+    "name": "Barrio Chipre",
+    "city": "Manizales",
+    "department": "Caldas"
+  },
+  {
+    "id": 23,
+    "name": "Barrio La Sultana",
+    "city": "Manizales",
+    "department": "Caldas"
+  },
+  {
+    "id": 22,
+    "name": "Barrio Milán",
+    "city": "Manizales",
+    "department": "Caldas"
+  },
+  {
+    "id": 15,
+    "name": "Barrio Palermo",
+    "city": "Manizales",
+    "department": "Caldas"
+  },
+  {
+    "id": 28,
+    "name": "Barrio San Jose",
+    "city": "Manizales",
+    "department": "Caldas"
+  },
+  {
+    "id": 16,
+    "name": "Barrio Villapilar",
+    "city": "Manizales",
+    "department": "Caldas"
+  },
+  {
+    "id": 7,
+    "name": "Sector El Bosque",
+    "city": "Manizales",
+    "department": "Caldas"
+  },
+
+  {
+    "id": 9,
+    "name": "Barrio Belen",
+    "city": "Bogotá",
+    "department": "Cundinamarca"
+  },
+  {
+    "id": 21,
+    "name": "Barrio Las Aguas",
+    "city": "Bogotá",
+    "department": "Cundinamarca"
+  },
+  {
+    "id": 11,
+    "name": "Barrio Santa Fe",
+    "city": "Bogotá",
+    "department": "Cundinamarca"
+  },
+  {
+    "id": 12,
+    "name": "Sector Chapinero",
+    "city": "Bogotá",
+    "department": "Cundinamarca"
+  },
+  {
+    "id": 20,
+    "name": "Sector Suba",
+    "city": "Bogotá",
+    "department": "Cundinamarca"
+  },
+  {
+    "id": 19,
+    "name": "Sector Teusaquillo",
+    "city": "Bogotá",
+    "department": "Cundinamarca"
+  },
+  {
+    "id": 37,
+    "name": "Zona El Cerro",
+    "city": "Zipaquirá",
+    "department": "Cundinamarca"
+  },
+  {
+    "id": 30,
+    "name": "Zona La Macarena",
+    "city": "Bogotá",
+    "department": "Cundinamarca"
+  },
+
+  {
+    "id": 33,
+    "name": "Barrio Cerritos",
+    "city": "Pereira",
+    "department": "Risaralda"
+  },
+  {
+    "id": 34,
+    "name": "Barrio El Jardín",
+    "city": "Pereira",
+    "department": "Risaralda"
+  },
+  {
+    "id": 31,
+    "name": "Sector El Poblado",
+    "city": "Pereira",
+    "department": "Risaralda"
+  },
+  {
+    "id": 35,
+    "name": "Sector Universidad",
+    "city": "Pereira",
+    "department": "Risaralda"
+  }
+]

@@ -1,0 +1,88 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group__label {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  color: #374151;
+}
+
+.form-group__required {
+  color: #ef4444;
+  margin-left: 4px;
+}
+
+.currency-input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 12px;
+  color: #374151;
+  font-size: 15px;
+  font-family: "Manrope", sans-serif;
+  pointer-events: none;
+}
+
+.form-control {
+  width: 100%;
+  height: 23px;
+  margin-right: -6px;
+  padding: 10px 10px 10px 28px; // espacio para el símbolo
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #fff;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  color: #374151;
+  appearance: none;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  border-color: #2563eb;
+}
+
+.form-control.invalid-input {
+  border-color: #ef4444 !important;
+}
+
+.currency-preview {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #2563eb;
+  margin-top: 2px;
+  min-height: 18px; // asegura el espacio
+  transition: color 0.2s;
+}
+
+.currency-preview.empty {
+  visibility: hidden; // Oculta pero mantiene el espacio
+}
+
+.error-message {
+  color: #ef4444;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  min-height: 18px;
+  margin-top: -30px;
+}
+
+// Quitar flechas en Chrome, Safari, Edge
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  // -webkit-appearance: none;
+  margin: 0;
+}
+
+// Quitar flechas en Firefox
+input[type="number"] {
+  // -moz-appearance: textfield;
+  appearance: textfield;
+}

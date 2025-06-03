@@ -61,36 +61,13 @@
     [max]="today"
   ></app-input-date>
 
-  <!-- Atomizar Select-->
-  <div class="form-group">
-    <label class="form-group__label" for="roleSelect"
-      >Rol<span class="form-group__required">*</span>
-    </label>
-    <select
-      id="roleSelect"
-      class="form-control"
-      formControlName="role"
-      [ngClass]="{
-        'empty-role': !selectedRole,
-        'selected-role': selectedRole,
-        'invalid-select':
-          userForm.controls.role.touched && userForm.controls.role.invalid
-      }"
-      required
-    >
-      <option [ngValue]="null" disabled selected>Selecciona un Rol</option>
-      <option *ngFor="let role of roles" [ngValue]="role">
-        {{ role.name }}
-      </option>
-    </select>
-    <div class="error-message">
-      <span
-        *ngIf="userForm.controls.role.touched && userForm.controls.role.invalid"
-      >
-        {{ userForm.controls.role.errors?.['required'] ? 'Debes seleccionar un rol' : '' }}
-      </span>
-    </div>
-  </div>
+  <app-select
+    [label]="'Rol'"
+    [control]="userForm.controls.role"
+    [options]="roles"
+    optionLabel="name"
+    placeholder="Selecciona un Rol"
+  ></app-select>
 
   <div class="form-actions">
     <app-button label="Crear Usuario" type="submit"></app-button>
