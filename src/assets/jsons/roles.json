@@ -3,10 +3,5 @@
     "id": 2,
     "name": "Agente Inmobiliario",
     "description": "Rol de vendedor"
-  },
-  {
-    "id": 3,
-    "name": "Cliente",
-    "description": "Rol de comprador o cliente"
   }
 ]

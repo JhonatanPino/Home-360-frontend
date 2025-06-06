@@ -8,12 +8,10 @@ import {
 import { HomeDto } from 'src/app/shared/dtos/home-dto.model';
 import { HomeService } from 'src/app/core/services/home.service';
 import { ToastrService } from 'ngx-toastr';
-import { VALIDATION } from 'src/app/shared/constants/validation.constants';
 import { STRING_MESSAGE } from 'src/app/shared/constants/string-message.constants';
 import { Category } from 'src/app/shared/models/category.model';
 import { Location } from 'src/app/shared/models/location.model';
 import { HttpClient } from '@angular/common/http';
-import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { PublicationStatus } from 'src/app/shared/enums/publication-status.model';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { LocationService } from 'src/app/core/services/location.service';

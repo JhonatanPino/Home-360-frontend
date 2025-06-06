@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { HomeService } from 'src/app/core/services/home.service';
-import { Home } from 'src/app/shared/models/home.model';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
