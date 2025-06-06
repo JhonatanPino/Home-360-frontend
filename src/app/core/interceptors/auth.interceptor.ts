@@ -6,7 +6,6 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -14,19 +13,17 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = environment.token;
-
+    // Solo agrega el token en POST
     if (req.method === 'POST') {
-      const authReq = req.clone({
+      const token = (window as any).environment?.token || ''; // O de localStorage
+      const cloned = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       });
-
-      return next.handle(authReq);
+      return next.handle(cloned);
     }
-
     return next.handle(req);
   }
 }

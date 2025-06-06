@@ -46,7 +46,7 @@ describe('HomeService', () => {
       expect(response).toEqual(mockHome);
     });
 
-    const req = httpMock.expectOne(`${environment.apiUrl}lhomes/`);
+    const req = httpMock.expectOne(`${environment.apiUrl}homes/`);
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(mockHome);
 

@@ -25,7 +25,7 @@ export const STRING_MESSAGE = {
   AGE_REQUIRED: 'Debe ser mayor de edad',
 
   // Home
-  HOME_PUBLISHED_SUCCESS: 'Casa publicada exitosamente.',
+  HOME_PUBLISHED_SUCCESS: 'Publicación creada exitosamente.',
   HOME_ALREADY_EXISTS: 'La casa ya existe.',
   HOME_PUBLISHED_ERROR: 'Error al publicar la casa.',
   FIELD_CATEGOTY_REQUIRED: 'Debes seleccionar una categoría',

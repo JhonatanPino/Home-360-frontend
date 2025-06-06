@@ -21,7 +21,7 @@ import { LocationService } from 'src/app/core/services/location.service';
   templateUrl: './publish-home-form.component.html',
   styleUrls: ['./publish-home-form.component.scss'],
 })
-export class PublishHomeFormComponent implements OnInit {
+export class PublishHomeFormComponent {
   private readonly fb = inject(FormBuilder);
   private readonly homeService = inject(HomeService);
   private readonly toastr = inject(ToastrService);
@@ -34,9 +34,7 @@ export class PublishHomeFormComponent implements OnInit {
     private categoryService: CategoryService,
     private locationService: LocationService,
     private http: HttpClient
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.categoryService.getAllCategories(0, 100).subscribe({
       next: (data) => {
         this.categories = data.content;
@@ -63,9 +61,7 @@ export class PublishHomeFormComponent implements OnInit {
     rooms: FormControl<number | null>;
     bathrooms: FormControl<number | null>;
     price: FormControl<number | null>;
-    publicationDate: FormControl<Date | null>;
     publicationDateActive: FormControl<Date | null>;
-    status: FormControl<PublicationStatus | null>;
     category: FormControl<Category | null>;
     location: FormControl<Location | null>;
   }> = this.fb.group({
@@ -83,11 +79,7 @@ export class PublishHomeFormComponent implements OnInit {
       Validators.required,
       Validators.min(1),
     ]),
-    publicationDate: this.fb.control<Date | null>(null, [Validators.required]),
     publicationDateActive: this.fb.control<Date | null>(null, [
-      Validators.required,
-    ]),
-    status: this.fb.control<PublicationStatus | null>(null, [
       Validators.required,
     ]),
     category: this.fb.control<Category | null>(null, [Validators.required]),
@@ -150,7 +142,7 @@ export class PublishHomeFormComponent implements OnInit {
       rooms: rooms!,
       bathrooms: bathrooms!,
       price: price!,
-      publicationDate: fechaActual,
+      publicationDate: fechaActual!,
       publicationDateActive: publicationDateActive!,
       idCategory: this.selectedCategory.id!,
       idLocation: this.selectedLocation.id!,
